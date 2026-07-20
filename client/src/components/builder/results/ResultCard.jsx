@@ -1,6 +1,12 @@
 import { createPaymentOrder, verifyPayment } from "../../../services/paymentApi.js";
+import { toast } from "react-hot-toast";
+import {useNavigate} from "react-router-dom";
+import { useState } from "react";
+
 export default function ResultCard({ result }) {
+  const [paying, setPaying] = useState(false);
   const plan = result?.parsed_plan;
+  const navigate = useNavigate();
 
   const handlePayment = async () => {
     try {
@@ -20,23 +26,36 @@ export default function ResultCard({ result }) {
         order_id: payment.order.id,
 
         handler: async function (response) {
+          setPaying(true);
             try {
 
-    const verification = await verifyPayment(response);
+   const verification = await verifyPayment(response);
 
-    console.log(verification);
+if (verification.success) {
 
-    if (verification.success) {
+    toast.success("Recharge Purchased Successfully 🎉");
 
-      alert("✅ Payment Verified Successfully!");
+    setTimeout(() => {
 
-    }
+        navigate("/payment-success", {
+
+            state: {
+                plan,
+                predictedPrice: result.predicted_price,
+                payment: response
+            }
+
+        });
+
+    },1000);
+
+}
 
   } catch (error) {
 
     console.error(error);
 
-    alert("Payment verification failed.");
+    toast.error("Payment Verification Failed");
 
   }
         },
@@ -53,6 +72,8 @@ export default function ResultCard({ result }) {
         modal: {
           ondismiss: function () {
             console.log("Payment popup closed");
+            toast("Payment Cancelled");
+            setPaying(false);
           },
         },
       };
@@ -60,8 +81,9 @@ export default function ResultCard({ result }) {
       const razorpay = new window.Razorpay(options);
       razorpay.on("payment.failed", function (response) {
         console.log("Payment Failed");
-
         console.log(response.error);
+        toast.error("Payment Failed. Please try again.");
+        setPaying(false);
       });
 
       razorpay.open();
@@ -100,22 +122,16 @@ export default function ResultCard({ result }) {
       </div>
 
       <button
-        onClick={handlePayment}
-        className="
-mt-10
-w-full
-rounded-xl
-bg-gradient-to-r
-from-green-600
-to-emerald-500
-py-4
-font-semibold
-hover:scale-[1.02]
-transition
-"
-      >
-        Proceed To Pay
-      </button>
+    onClick={handlePayment}
+    disabled={paying}
+    className={`mt-10 w-full rounded-xl py-4 font-semibold transition-all duration-300 ${
+        paying
+            ? "cursor-not-allowed bg-slate-600"
+            : "bg-gradient-to-r from-blue-600 to-violet-600 hover:scale-[1.02]"
+    }`}
+>
+    {paying ? "Processing Payment..." : "Proceed To Pay"}
+</button>
     </div>
   );
 }

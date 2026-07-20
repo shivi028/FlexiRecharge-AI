@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { generateManualPlan } from "../../services/rechargeApi";
 export default function ManualBuilder({
   setResult,
   setLoading,
@@ -35,7 +36,7 @@ export default function ManualBuilder({
       setLoading(true);
       setError(null);
 
-      const response = await generateManualRechargePlan(plan);
+      const response = await generateManualPlan(plan);
 
       setResult(response.data);
     } catch (err) {
@@ -68,66 +69,55 @@ export default function ManualBuilder({
         </select>
 
         <select
-  value={plan.data_per_day ?? ""}
-  onChange={(e) =>
-    setPlan((prev) => ({
-      ...prev,
-      data_per_day: e.target.value
-        ? Number(e.target.value)
-        : null,
-    }))
-  }
-  className="rounded-xl bg-slate-900 p-4"
->
-  <option value="">No Data</option>
-  <option value="1">1 GB/day</option>
-  <option value="1.5">1.5 GB/day</option>
-  <option value="2">2 GB/day</option>
-  <option value="2.5">2.5 GB/day</option>
-  <option value="3">3 GB/day</option>
-</select>
+          value={plan.data_per_day ?? ""}
+          onChange={(e) =>
+            setPlan((prev) => ({
+              ...prev,
+              data_per_day: e.target.value ? Number(e.target.value) : null,
+            }))
+          }
+          className="rounded-xl bg-slate-900 p-4"
+        >
+          <option value="">No Data</option>
+          <option value="1">1 GB/day</option>
+          <option value="1.5">1.5 GB/day</option>
+          <option value="2">2 GB/day</option>
+          <option value="2.5">2.5 GB/day</option>
+          <option value="3">3 GB/day</option>
+        </select>
 
-<div className="flex gap-6">
+        <div className="flex gap-6">
+          {["Unlimited", "None"].map((calls) => (
+            <label key={calls} className="flex items-center gap-2">
+              <input
+                type="radio"
+                checked={plan.calls === calls}
+                onChange={() =>
+                  setPlan((prev) => ({
+                    ...prev,
+                    calls,
+                  }))
+                }
+              />
 
-  {["Unlimited", "None"].map((calls) => (
+              {calls}
+            </label>
+          ))}
+        </div>
 
-    <label key={calls} className="flex items-center gap-2">
-
-      <input
-        type="radio"
-        checked={plan.calls === calls}
-        onChange={() =>
-          setPlan((prev) => ({
-            ...prev,
-            calls,
-          }))
-        }
-      />
-
-      {calls}
-
-    </label>
-
-  ))}
-
-</div>
-
-<label className="flex items-center gap-3">
-
-  <input
-    type="checkbox"
-    checked={plan.sms}
-    onChange={(e) =>
-      setPlan((prev) => ({
-        ...prev,
-        sms: e.target.checked,
-      }))
-    }
-  />
-
-  Include SMS
-
-</label>
+        <label className="flex items-center gap-3">
+          <input
+            type="checkbox"
+            checked={plan.sms}
+            onChange={(e) =>
+              setPlan((prev) => ({
+                ...prev,
+                sms: e.target.checked,
+              }))
+            }
+          />
+          Include SMS
+        </label>
 
         <div className="flex gap-6">
           {["4G", "5G"].map((network) => (
@@ -175,19 +165,17 @@ export default function ManualBuilder({
         </div>
 
         <input
-  type="number"
-  placeholder="Budget (Optional)"
-  value={plan.budget ?? ""}
-  onChange={(e) =>
-    setPlan((prev) => ({
-      ...prev,
-      budget: e.target.value
-        ? Number(e.target.value)
-        : null,
-    }))
-  }
-  className="rounded-xl bg-slate-900 p-4"
-/>
+          type="number"
+          placeholder="Budget (Optional)"
+          value={plan.budget ?? ""}
+          onChange={(e) =>
+            setPlan((prev) => ({
+              ...prev,
+              budget: e.target.value ? Number(e.target.value) : null,
+            }))
+          }
+          className="rounded-xl bg-slate-900 p-4"
+        />
       </div>
 
       <button

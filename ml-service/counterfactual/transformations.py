@@ -43,6 +43,8 @@ class NetworkTransformation(Transformation):
             return [{
                 "category": "Network Optimization",
                 "title": "Switch to 4G",
+                "action": "Use a 4G recharge instead of 5G",
+                "reason": "If 5G isn't essential, switching to a 4G recharge reduces the overall cost while keeping calls and data benefits similar.",
                 "plan": new_plan
             }]
 
@@ -68,6 +70,9 @@ class ValidityTransformation(Transformation):
         new_plan["days"] = nearest
 
         return [{
+            "category": "Validity Optimization",
             "title": f"Use {nearest}-Day Plan",
+            "action": f"Reduce validity to {nearest} days",
+            "reason": "Choosing the closest standard validity can reduce the recharge price while still meeting your needs.",
             "plan": new_plan
         }]

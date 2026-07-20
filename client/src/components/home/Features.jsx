@@ -1,60 +1,96 @@
+import {
+  Bot,
+  BrainCircuit,
+  TrendingUp,
+  ShieldCheck,
+} from "lucide-react";
 import FeatureCard from "./FeatureCard";
 
 const features = [
   {
-    icon: "🤖",
-    title: "AI Plan Builder",
+    icon: Bot,
+    title: "AI Recharge Builder",
     description:
-      "Describe your recharge in natural language and let AI create the perfect plan.",
+      "Simply describe your recharge needs in natural language and let AI generate the perfect personalized plan.",
   },
   {
-    icon: "🧠",
+    icon: BrainCircuit,
+    title: "Machine Learning Pricing",
+    description:
+      "A trained ML model predicts accurate recharge pricing based on your selected features and preferences.",
+  },
+  {
+    icon: TrendingUp,
     title: "Smart Recommendations",
     description:
-      "Get optimized recharge suggestions to save money while meeting your needs.",
+      "Receive optimized suggestions that help reduce recharge costs while preserving the features you care about.",
   },
   {
-    icon: "📊",
-    title: "Dynamic Pricing",
-    description:
-      "Machine Learning predicts the estimated cost of your customized recharge.",
-  },
-  {
-    icon: "💳",
+    icon: ShieldCheck,
     title: "Secure Payments",
     description:
-      "Pay seamlessly using Razorpay's secure payment gateway.",
+      "Complete purchases confidently with Razorpay integration and secure payment verification.",
   },
 ];
 
 export default function Features() {
   return (
+    <div>
     <section
       id="features"
-      className="mx-auto max-w-7xl px-6 py-24"
+      className="relative overflow-hidden py-28"
     >
-      <div className="text-center">
-        <p className="text-blue-400 font-semibold">
-          FEATURES
-        </p>
+      <div className="mx-auto max-w-7xl px-6">
 
-        <h2 className="mt-3 text-4xl font-bold">
-          Everything you need
-        </h2>
+        {/* Heading */}
 
-        <p className="mt-4 text-slate-400">
-          AI-powered recharge planning from start to finish.
-        </p>
-      </div>
+        <div className="mx-auto max-w-3xl text-center">
 
-      <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {features.map((feature) => (
-          <FeatureCard
-            key={feature.title}
-            {...feature}
-          />
-        ))}
+          <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300">
+
+            Why FlexiRecharge AI?
+
+          </span>
+
+          <h2 className="mt-6 text-4xl font-bold md:text-5xl">
+
+            Everything You Need for a
+
+            <span className="block bg-gradient-to-r from-blue-400 to-violet-500 bg-clip-text text-transparent">
+
+              Smarter Recharge Experience
+
+            </span>
+
+          </h2>
+
+          <p className="mt-6 text-lg leading-8 text-slate-400">
+
+            From AI-powered recommendations to secure payments,
+            every step is designed to make recharge planning
+            faster, smarter, and more personalized.
+
+          </p>
+
+        </div>
+
+        {/* Cards */}
+
+        <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+
+          {features.map((feature) => (
+
+            <FeatureCard
+              key={feature.title}
+              {...feature}
+            />
+
+          ))}
+
+        </div>
+
       </div>
     </section>
+    </div>
   );
 }
