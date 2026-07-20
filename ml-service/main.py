@@ -92,4 +92,11 @@ def manual_plan(request: ManualPlanRequest):
         }
     }
 
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "service": "FlexiRecharge AI ML Service"
+    }
+
     
