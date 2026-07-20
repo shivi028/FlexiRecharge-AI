@@ -15,9 +15,6 @@ model = joblib.load(MODEL_PATH)
 class PricePredictor:
 
     def predict(self, plan):
-
         df = FeatureBuilder.build(plan)
-
         prediction = model.predict(df)[0]
-
         return round(float(prediction), 2)
