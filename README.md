@@ -20,7 +20,7 @@ Generate personalized recharge plans using **Natural Language Processing**, **Ma
 
 <!-- Replace after deployment -->
 
-### 🌐 Live Demo • 🎥 Demo Video • 📄 Documentation
+### 🌐 Live Demo • 🎥 Demo Video 
 
 </div>
 
