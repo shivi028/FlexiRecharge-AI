@@ -1,8 +1,10 @@
 <div align="center">
 
-# ⚡ FlexiRecharge AI
+<h1>⚡ FlexiRecharge AI</h1>
 
-### AI-Powered Telecom Recharge Recommendation Platform
+<h3>
+AI-Powered Telecom Recharge Recommendation Platform
+</h3>
 
 Generate personalized recharge plans using **Natural Language Processing**, **Machine Learning**, and **Secure Razorpay Payments**.
 
@@ -24,11 +26,10 @@ Generate personalized recharge plans using **Natural Language Processing**, **Ma
 
 ---
 
-# 📸 Preview
 
-> **Replace this image after deployment**
-
-![FlexiRecharge AI Banner](./screenshots/banner.png)
+<p align="center">
+  <img src="./screenshots/banner.png" width="900"/>
+</p>
 
 ---
 
@@ -237,31 +238,37 @@ FlexiRecharge AI
 
 ## 🏠 Landing Page
 
-> *(Add Screenshot)*
+> <img src="./screenshots/landingPage.png" width="900"/>
 
 ---
 
 ## 🤖 AI Builder
 
-> *(Add Screenshot)*
+> <img src="./screenshots/AIBuilder.png" width="900"/>
 
 ---
 
 ## ⚙️ Manual Builder
 
-> *(Add Screenshot)*
+> <img src="./screenshots/manualBuilder.png" width="900"/>
 
 ---
 
 ## 💳 Razorpay Checkout
 
-> *(Add Screenshot)*
+> <img src="./screenshots/razorPayCheckout.png" width="900"/>
 
 ---
 
 ## ✅ Payment Success
 
-> *(Add Screenshot)*
+> <img src="./screenshots/paymentSuccess.png" width="900"/>
+
+---
+
+## ✅ Recharge Success Page
+
+> <img src="./screenshots/rechargeSuccessPage.png" width="900"/>
 
 ---
 
