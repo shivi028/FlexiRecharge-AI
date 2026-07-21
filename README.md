@@ -20,7 +20,7 @@ Generate personalized recharge plans using **Natural Language Processing**, **Ma
 
 <!-- Replace after deployment -->
 
-### 🌐 Live Demo • 🎥 Demo Video 
+### 🌐 Live Demo 
 
 </div>
 
@@ -30,6 +30,10 @@ Generate personalized recharge plans using **Natural Language Processing**, **Ma
 <p align="center">
   <img src="./screenshots/banner.png" width="900"/>
 </p>
+<p align="center">
+  <img src="./screenshots/flexirecharge.MP4" width="900"/>
+</p>
+
 
 ---
 
